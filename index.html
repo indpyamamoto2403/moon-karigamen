@@ -6,24 +6,54 @@
     <title>The Moon Function TestAPI</title>
     <link rel="icon" href="icon/favicon.transparent.ico">
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
-        h1 { color: #333; }
-        form { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 5px; }
-        input[type="text"] { width: 300px; padding: 5px; }
-        button { padding: 5px 10px; background-color: #007bff; color: white; border: none; cursor: pointer; }
-        button:hover { background-color: #0056b3; }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, black, blue);
+            color: yellow;
+        }
+        h1 {
+            color: yellow;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 5px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: yellow;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
         #api-response-container {
-            background-color: #f4f4f4;
+            background-color: rgba(244, 244, 244, 0.1);
             padding: 10px;
             border-radius: 5px;
             max-width: 400px;
-            min-height: 200px; /* 抽出実行前の高さを確保 */
+            min-height: 200px;
             position: relative;
         }
         #api-response {
             white-space: pre-wrap;
             word-wrap: break-word;
+            color: yellow;
         }
         .loader {
             border: 5px solid #f3f3f3;
@@ -46,39 +76,42 @@
     </style>
 </head>
 <body>
-    <h1>The Moon Function TestAPI</h1>
+    <div>
+        <h1>The Moon Function TestAPI</h1>
 
-    <form id="question-form">
-        <label for="question-input">質問:</label>
-        <input type="text" id="question-input" required>
-        <button type="submit">送信</button>
-    </form>
+        <form id="question-form">
+            <label for="question-input">質問:</label>
+            <input type="text" id="question-input" required>
+            <button type="submit">送信</button>
+        </form>
 
-    <form id="url-query-form" method="post">
-        <label for="url-input">入力:URL→出力:本文抽出</label>
-        <input type="text" id="url-input" required>
-        <button type="submit">送信</button>
-    </form>
+        <form id="url-query-form" method="post">
+            <label for="url-input">入力:URL→出力:本文抽出</label>
+            <input type="text" id="url-input" required>
+            <button type="submit">送信</button>
+        </form>
 
-    <form id="keyword-query-form">
-        <label for="keyword-input">キーワード直接質問:</label>
-        <input type="text" id="keyword-input" required>
-        <button type="submit">送信</button>
-    </form>
+        <form id="keyword-query-form">
+            <label for="keyword-input">キーワード直接質問:</label>
+            <input type="text" id="keyword-input" required>
+            <button type="submit">送信</button>
+        </form>
 
-    <form id="search-form">
-        <label for="search-input">入力:キーワード→検索API経由→出力:要約文</label>
-        <input type="text" id="search-input" required>
-        <button type="submit">送信</button>
-    </form>
+        <form id="search-form">
+            <label for="search-input">入力:キーワード→検索API経由→出力:要約文</label>
+            <input type="text" id="search-input" required>
+            <button type="submit">送信</button>
+        </form>
 
-    <h2>API Response:</h2>
-    <div id="api-response-container">
-        <div class="loader" id="loader"></div>
-        <pre id="api-response"></pre>
+        <h2>応答:</h2>
+        <div id="api-response-container">
+            <div class="loader" id="loader"></div>
+            <pre id="api-response"></pre>
+        </div>
+        <br>
+        <span>©independence 2024/09/30</span>
     </div>
-    <br>
-    <span>©independence 2024/09/30</span>
+
     <script>
         const apiBaseUrl = 'https://moon-api-test-deploy-ecfpc8bph6f3hvhu.canadacentral-01.azurewebsites.net';
         const loader = document.getElementById('loader');
