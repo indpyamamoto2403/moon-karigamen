@@ -90,6 +90,12 @@
             <button type="submit">送信</button>
         </form>
 
+        <form id="url-content-form" method="post">
+            <label for="url-content">入力:URL→出力:原文</label>
+            <input type="text" id="url-content" required>
+            <button type="submit">送信</button>
+        </form>
+
         <form id="keyword-query-form">
             <label for="keyword-input">キーワード直接質問:</label>
             <input type="text" id="keyword-input" required>
@@ -112,6 +118,7 @@
     </div>
 
     <script>
+        //const apiBaseUrl = 'http://localhost:5000';
         const apiBaseUrl = 'https://moon-api-test-deploy-ecfpc8bph6f3hvhu.canadacentral-01.azurewebsites.net';
         const loader = document.getElementById('loader');
         const apiResponse = document.getElementById('api-response');
@@ -152,6 +159,12 @@
             e.preventDefault();
             const urlPath = document.getElementById('url-input').value;
             await fetchApiResponse(`/url_query`, { url_path: urlPath }, 'POST');  // Use POST method with JSON body
+        });
+
+        document.getElementById('url-content-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const urlPath = document.getElementById('url-content').value;
+            await fetchApiResponse(`/url_content`, { url_path: urlPath }, 'POST');  // Use POST method with JSON body
         });
 
         document.getElementById('keyword-query-form').addEventListener('submit', async (e) => {
