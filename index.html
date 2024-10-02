@@ -115,6 +115,12 @@
             <button type="submit">送信</button>
         </form>
 
+        ベクトルサーチフォームの作成
+        <form id="vector-search-form">
+            <label for="vector-search-input">入力:未定→出力:要約文</label>
+            <input type="text" id="vector-search-input"  placeholder="例:text" required>
+            <button type="submit">送信</button>
+
         <h2>応答:</h2>
         <div id="api-response-container">
             <div class="loader" id="loader"></div>
@@ -184,6 +190,12 @@
             e.preventDefault();
             const keyword = document.getElementById('search-input').value;
             await fetchApiResponse(`/search/${encodeURIComponent(keyword)}`);
+        });
+
+        document.getElementById('vector-search-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const keyword = document.getElementById('vector-search-input').value;
+            await fetchApiResponse(`/vector_search/${encodeURIComponent(keyword)}`);
         });
     </script>
 </body>
