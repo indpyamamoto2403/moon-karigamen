@@ -124,6 +124,14 @@
 
         <h3>ニュース検索:</h3>
         <form id="news-search-form">
+            <label for="result-count">表示件数</label>
+            <select id="result-count" required>
+                <option value="1">1件</option>
+                <option value="2">2件</option>
+                <option value="3">3件</option>
+                <option value="4">4件</option>
+                <option value="5">5件</option>
+            </select>
             <label for="news-search-input">キーワード1</label>
             <input type="text" id="news-search-input1"  placeholder="総理大臣" required>
             <label for="news-search-input">キーワード2</label>
@@ -131,6 +139,7 @@
             <label for="news-search-input">キーワード3</label>
             <input type="text" id="news-search-input3"  placeholder="最近" required>
             <button type="submit">送信</button>
+
         </form>
 
         <h2>応答:</h2>
@@ -143,8 +152,8 @@
     </div>
 
     <script>
-        //const apiBaseUrl = 'http://localhost:5000';
-        const apiBaseUrl = 'https://moon-api-test-deploy-ecfpc8bph6f3hvhu.canadacentral-01.azurewebsites.net';
+        const apiBaseUrl = 'http://localhost:5000';
+        //const apiBaseUrl = 'https://moon-api-test-deploy-ecfpc8bph6f3hvhu.canadacentral-01.azurewebsites.net';
         const loader = document.getElementById('loader');
         const apiResponse = document.getElementById('api-response');
 
@@ -215,11 +224,13 @@
             const keyword1 = document.getElementById('news-search-input1').value;
             const keyword2 = document.getElementById('news-search-input2').value;
             const keyword3 = document.getElementById('news-search-input3').value;
+            const page = document.getElementById('result-count').value;
 
             const queryParams = new URLSearchParams({
                 keyword1: keyword1,
                 keyword2: keyword2,
-                keyword3: keyword3
+                keyword3: keyword3,
+                page: page,
             }).toString();
             console.log(queryParams);
             await fetchApiResponse(`/news?${queryParams}`);
