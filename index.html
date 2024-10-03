@@ -221,8 +221,8 @@
                 keyword2: keyword2,
                 keyword3: keyword3
             }).toString();
-
-            await fetchApiResponse(`/news_search?${queryParams}`);
+            console.log(queryParams);
+            await fetchApiResponse(`/news?${queryParams}`);
         });
 
 
