@@ -152,10 +152,11 @@
     </div>
 
     <script>
-        const apiBaseUrl = 'http://localhost:5000';
-        //const apiBaseUrl = 'https://moon-api-test-deploy-ecfpc8bph6f3hvhu.canadacentral-01.azurewebsites.net';
+        //const apiBaseUrl = 'http://localhost:5000';
+        const apiBaseUrl = 'https://moon-api-test-deploy-ecfpc8bph6f3hvhu.canadacentral-01.azurewebsites.net';
         const loader = document.getElementById('loader');
         const apiResponse = document.getElementById('api-response');
+
 
         async function fetchApiResponse(endpoint, params = {}, method = 'GET') {
             loader.style.display = 'block';
@@ -235,8 +236,6 @@
             console.log(queryParams);
             await fetchApiResponse(`/news?${queryParams}`);
         });
-
-
     </script>
 </body>
 </html>
