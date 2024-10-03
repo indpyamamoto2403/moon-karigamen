@@ -116,11 +116,22 @@
             <button type="submit">送信</button>
         </form>
 
-        ベクトルサーチフォームの作成
         <form id="vector-search-form">
             <label for="vector-search-input">入力:未定→出力:要約文</label>
             <input type="text" id="vector-search-input"  placeholder="例:text" required>
             <button type="submit">送信</button>
+        </form>
+
+        <h3>ニュース検索:</h3>
+        <form id="news-search-form">
+            <label for="news-search-input">キーワード1</label>
+            <input type="text" id="news-search-input1"  placeholder="総理大臣" required>
+            <label for="news-search-input">キーワード2</label>
+            <input type="text" id="news-search-input2"  placeholder="日本" required>
+            <label for="news-search-input">キーワード3</label>
+            <input type="text" id="news-search-input3"  placeholder="最近" required>
+            <button type="submit">送信</button>
+        </form>
 
         <h2>応答:</h2>
         <div id="api-response-container">
@@ -198,6 +209,23 @@
             const keyword = document.getElementById('vector-search-input').value;
             await fetchApiResponse(`/vector_search/${encodeURIComponent(keyword)}`);
         });
+
+        document.getElementById('news-search-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const keyword1 = document.getElementById('news-search-input1').value;
+            const keyword2 = document.getElementById('news-search-input2').value;
+            const keyword3 = document.getElementById('news-search-input3').value;
+
+            const queryParams = new URLSearchParams({
+                keyword1: keyword1,
+                keyword2: keyword2,
+                keyword3: keyword3
+            }).toString();
+
+            await fetchApiResponse(`/news_search?${queryParams}`);
+        });
+
+
     </script>
 </body>
 </html>
