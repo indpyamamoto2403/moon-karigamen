@@ -185,17 +185,17 @@
             }
         }
 
-        document.getElementById('question-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const question = document.getElementById('question-input').value;
-            await fetchApiResponse(`/question/${encodeURIComponent(question)}`);
-        });
+        // document.getElementById('question-form').addEventListener('submit', async (e) => {
+        //     e.preventDefault();
+        //     const question = document.getElementById('question-input').value;
+        //     await fetchApiResponse(`/question/${encodeURIComponent(question)}`);
+        // });
 
-        document.getElementById('url-query-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const urlPath = document.getElementById('url-input').value;
-            await fetchApiResponse(`/url_query`, { url_path: urlPath }, 'POST');  // Use POST method with JSON body
-        });
+        // document.getElementById('url-query-form').addEventListener('submit', async (e) => {
+        //     e.preventDefault();
+        //     const urlPath = document.getElementById('url-input').value;
+        //     await fetchApiResponse(`/url_query`, { url_path: urlPath }, 'POST');  // Use POST method with JSON body
+        // });
 
         document.getElementById('url-content-form').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -203,23 +203,23 @@
             await fetchApiResponse(`/url_content`, { url_path: urlPath }, 'POST');  // Use POST method with JSON body
         });
 
-        document.getElementById('keyword-query-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const keyword = document.getElementById('keyword-input').value;
-            await fetchApiResponse(`/keyword_query/${encodeURIComponent(keyword)}`);
-        });
+        // document.getElementById('keyword-query-form').addEventListener('submit', async (e) => {
+        //     e.preventDefault();
+        //     const keyword = document.getElementById('keyword-input').value;
+        //     await fetchApiResponse(`/keyword_query/${encodeURIComponent(keyword)}`);
+        // });
 
-        document.getElementById('search-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const keyword = document.getElementById('search-input').value;
-            await fetchApiResponse(`/search/${encodeURIComponent(keyword)}`);
-        });
+        // document.getElementById('search-form').addEventListener('submit', async (e) => {
+        //     e.preventDefault();
+        //     const keyword = document.getElementById('search-input').value;
+        //     await fetchApiResponse(`/search/${encodeURIComponent(keyword)}`);
+        // });
 
-        document.getElementById('vector-search-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const keyword = document.getElementById('vector-search-input').value;
-            await fetchApiResponse(`/vector_search/${encodeURIComponent(keyword)}`);
-        });
+        // document.getElementById('vector-search-form').addEventListener('submit', async (e) => {
+        //     e.preventDefault();
+        //     const keyword = document.getElementById('vector-search-input').value;
+        //     await fetchApiResponse(`/vector_search/${encodeURIComponent(keyword)}`);
+        // });
 
         document.getElementById('news-search-form').addEventListener('submit', async (e) => {
             e.preventDefault();
