@@ -135,14 +135,26 @@
             <label for="news-search-input">キーワード1</label>
             <input type="text" id="news-search-input1"  placeholder="総理大臣" required>
             <label for="news-search-input">キーワード2</label>
-            <input type="text" id="news-search-input2"  placeholder="日本" required>
+            <input type="text" id="news-search-input2"  placeholder="日本">
             <label for="news-search-input">キーワード3</label>
-            <input type="text" id="news-search-input3"  placeholder="最近" required>
+            <input type="text" id="news-search-input3"  placeholder="最近">
             <button type="submit">送信</button>
 
         </form>
 
         <h2>応答:</h2>
+        <div id="searched-keywords">
+            <h3>検索キーワード:</h3>
+            <ul id="searched-keywords-list">
+            </ul>
+        </div>
+
+        <h3>URL応答:</h3>
+        <div id="searched-keywords">
+            <ul id="searched-urls-list">
+            </ul>
+        </div>
+
         <div id="api-response-container">
             <div class="loader" id="loader"></div>
             <pre id="api-response"></pre>
@@ -156,11 +168,14 @@
         const apiBaseUrl = 'https://moon-api-test-deploy-ecfpc8bph6f3hvhu.canadacentral-01.azurewebsites.net';
         const loader = document.getElementById('loader');
         const apiResponse = document.getElementById('api-response');
-
+        const SearchedWords = document.getElementById('searched-keywords-list');
+        const URLs = document.getElementById('searched-urls-list');
 
         async function fetchApiResponse(endpoint, params = {}, method = 'GET') {
             loader.style.display = 'block';
             apiResponse.innerText = '';
+            SearchedWords.innerHTML = '';
+            URLs.innerHTML = '';
 
             const url = new URL(`${apiBaseUrl}${endpoint}`);
 
@@ -176,7 +191,21 @@
                 const response = await fetch(url, options);
                 const data = await response.json();
                 console.log(data);
-                apiResponse.innerText = JSON.stringify(data, null, 2);
+
+                //サーチキーワードの種類
+                data.keywords.forEach(function (value, key) {
+                    SearchedWords.innerHTML += '<li>' + value + '</li>';
+                });
+
+                //URLのリスト
+                data.url.forEach(function (value, key) {
+                    URLs.innerHTML += '<li>' + value + '</li>';
+                });
+
+                data.news.forEach(function (value, key) {
+                    apiResponse.innerText += JSON.stringify(value, null, 2);
+                });
+
             } catch (error) {
                 console.error('Error fetching API response:', error);
                 apiResponse.innerText = 'Error fetching API response';
