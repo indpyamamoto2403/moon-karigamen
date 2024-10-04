@@ -98,11 +98,11 @@
             <button type="submit">送信</button>
         </form> -->
 
-        <form id="url-content-form" method="post">
+        <!-- <form id="url-content-form" method="post">
             <label for="url-content">入力:URL→出力:HTML原文</label>
             <input type="text" id="url-content"  placeholder="例:http://www.yahoo.co.jp" required>
             <button type="submit">送信</button>
-        </form>
+        </form> -->
 
         <!-- <form id="keyword-query-form">
             <label for="keyword-input">入力：キーワード(会社名など)　出力:要約文</label>
@@ -139,7 +139,6 @@
             <label for="news-search-input">キーワード3</label>
             <input type="text" id="news-search-input3"  placeholder="最近">
             <button type="submit">送信</button>
-
         </form>
 
         <h2>応答:</h2>
@@ -149,7 +148,7 @@
             </ul>
         </div>
 
-        <h3>URL応答:</h3>
+        <h3>URL応答</h3>
         <div id="searched-keywords">
             <ul id="searched-urls-list">
             </ul>
@@ -226,11 +225,11 @@
         //     await fetchApiResponse(`/url_query`, { url_path: urlPath }, 'POST');  // Use POST method with JSON body
         // });
 
-        document.getElementById('url-content-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const urlPath = document.getElementById('url-content').value;
-            await fetchApiResponse(`/url_content`, { url_path: urlPath }, 'POST');  // Use POST method with JSON body
-        });
+        // document.getElementById('url-content-form').addEventListener('submit', async (e) => {
+        //     e.preventDefault();
+        //     const urlPath = document.getElementById('url-content').value;
+        //     await fetchApiResponse(`/url_content`, { url_path: urlPath }, 'POST');  // Use POST method with JSON body
+        // });
 
         // document.getElementById('keyword-query-form').addEventListener('submit', async (e) => {
         //     e.preventDefault();
